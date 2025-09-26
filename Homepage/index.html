@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mabini, Batangas Tourism</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background: url("background.jpg") center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 2s ease;
+    }
+    header p {
+      font-size: 1.2rem;
+      animation: fadeInUp 2s ease;
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    nav {
+      background: #006d77;
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      justify-content: center;
+      padding: 15px 0;
+    }
+    nav ul li {
+      margin: 5px 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffd166;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .section {
+      margin-bottom: 60px;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #006d77;
+      margin-bottom: 20px;
+    }
+    .intro {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 15s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% {margin-left: 0;}
+      30% {margin-left: 0;}
+      33% {margin-left: -100%;}
+      63% {margin-left: -100%;}
+      66% {margin-left: -200%;}
+      96% {margin-left: -200%;}
+      100% {margin-left: 0;}
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .card-content h3 {
+      margin-bottom: 10px;
+      color: #118ab2;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #118ab2;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #073b4c;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: #073b4c;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    footer p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {font-size: 2rem;}
+      header p {font-size: 1rem;}
+      .slides img {height: 250px;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Beaches</a></li>
+      <li><a href="#">Resorts</a></li>
+      <li><a href="#">Activities</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+    
+  <header>
+    <h1>Discover Mabini, Batangas</h1>
+    <p>Dive into paradise, relax on white sand beaches, and experience true Batangueño hospitality.</p>
+  </header>
+
+  <div class="container">
+    <section class="section">
+      <h2>Welcome to Mabini</h2>
+      <p class="intro">
+        Nestled along the Batangas coastline, Mabini is known as the "Diving Capital of the Philippines". 
+        With its vibrant coral reefs, crystal clear waters, and scenic mountain views, it’s the perfect destination 
+        for adventurers, families, and nature lovers alike.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Top Attractions</h2>
+      <div class="carousel">
+        <div class="slides">
+          <img src="beach.jpg" alt="Mabini Beach">
+          <img src="diving.webp" alt="Scuba Diving">
+          <img src="mt. gulugod.jpg" alt="Mt. Gulugod Baboy">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Stay in Paradise</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="Anilao Awari Bay Resort.jpg" alt="Anilao Awari Bay Resort">
+          <div class="card-content">
+            <h3>Anilao Awari Bay Resort</h3>
+            <p>Enjoy a private beach stretch overlooking Balayan Bay, near famous diving sites.</p>
+            <a href="#" class="btn">View Resort</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="Vivere Azure Resort.webp" alt="Vivere Azure Resort">
+          <div class="card-content">
+            <h3>Vivere Azure Resort</h3>
+            <p>A luxury beachfront resort with breathtaking ocean views and serene atmosphere.</p>
+            <a href="#" class="btn">View Resort</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section map">
+      <h2>Find Us on the Map</h2>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7737.351399874157!2d120.918579!3d13.737034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd0f8a6a5b47e7%3A0x32f8b3393e9352cf!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1694303523410"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </section>
+  </div>
+
+  <footer>
+    <h3>Visit Mabini, Batangas</h3>
+    <p>Email: tourism@mabini.gov.ph | Facebook Page: Mabini Tourism</p>
+    <p>Phone: (043) 123-4567</p>
+    <p>&copy; 2025 Mabini Tourism Office. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
