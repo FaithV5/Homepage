@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Resort</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+/*RESORTS PAGE*/
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+  color: black;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.container * {
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  background: #006d77;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 15px 0;
+}
+nav ul li {
+  margin: 5px 15px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+nav ul li a:hover {
+  color: #ffd166;
+}
+
+/* Grid for resorts */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: blanchedalmond;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+}
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.card p {
+  margin: 10px;
+  font-weight: bold;
+  color: #444;
+}
+
+footer {
+  background: #073b4c;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+footer p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+.modal-content img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f44336;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.close-btn:hover {
+  background: #d32f2f;
+}
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="activities.html">Activities</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Choose Your Resort</h1>
+    <div class="grid">
+      <div class="card" onclick="showResort('Parecca Resort','Gasang, Mabini, Batangas','Perfect for families, offering pools and cozy villas near the beach.','Parecaa Resort.jpg')">
+        <img src="Parecaa Resort.jpg" alt="Parecaa Resort">
+        <p>Parecca Resort</p>
+      </div>
+
+      <div class="card" onclick="showResort('Anilao Awari Bay Resort','Brgy. Solo, Mabini, Batangas','On a private beach along Balayan Bay, this breezy resort is between the Old Anchor and Arthurs Rock dive sites.','Anilao Awari Bay Resort.jpg')">
+        <img src="Anilao Awari Bay Resort.jpg" alt="Anilao Awari Bay Resort">
+        <p>Anilao Awari Bay Resort</p>
+      </div>
+
+      <div class="card" onclick="showResort('Camp Netanya Resort','Ligaya, Mabini, Batangas','Known as the Santorini of Batangas, featuring Greek-inspired architecture.','Camp Netanya.jpg')">
+        <img src="Camp Netanya.jpg" alt="Camp Netanya Resort">
+        <p>Camp Netanya Resort</p>
+      </div>
+
+      <div class="card" onclick="showResort('Casa Teofila Private Resort','Anilao Proper, Mabini, Batangas','A private getaway perfect for small groups seeking peace and exclusivity.','Casa Teofila Private Resort.jpg')">
+        <img src="Casa Teofila Private Resort.jpg" alt="Casa Teofila Private Resort">
+        <p>Casa Teofila Private Resort</p>
+      </div>
+
+      <div class="card" onclick="showResort('Casita Ysabel','San Teodoro, Mabini, Batangas','A charming and peaceful space known for its rustic comfort. This family-run Bed & Breakfast is nestled in the peaceful mountainside of Mabini, Batangas.','Casita Ysabel.jpg')">
+        <img src="Casita Ysabel.jpg" alt="Casita Ysabel">
+        <p>Casita Ysabel</p>
+      </div>
+
+      <div class="card" onclick="showResort('Aquaventure Reef Club','Anilao, Mabini, Batangas','The resort offers diving courses, local diving, and ocean adventure tours, alongside beachfront accommodation, a restaurant, bar, a swimming pool, and various water sports facilities.','Aquaventure Reef Club Resort.jpg')">
+        <img src="Aquaventure Reef Club Resort.jpg" alt="Aquaventure Reef Club">
+        <p>Aquaventure Reef Club</p>
+      </div>
+
+      <div class="card" onclick="showResort('Sea Diver PH','11 Ligaya, Mabini, Batangas','A resort for diving lovers, offering boat trips and gear rentals.','Sea Diver PH.jpg')">
+        <img src="Sea Diver PH.jpg" alt="Sea Diver PH">
+        <p>Sea Diver PH</p>
+      </div>
+
+      <div class="card" onclick="showResort('Vivere Azure Resort','Barangay Aguada, San Teodoro, Mabini, Batangas','A luxury, 5-star resort in Anilao, Batangas, Philippines, featuring 13 unique suites with floor-to-ceiling windows, verandas, and sea/sunset views.','Vivere Azure Resort.jpg')">
+        <img src="Vivere Azure Resort.jpg" alt="Vivere Azure Resort">
+        <p>Vivere Azure Resort</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="resortModal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">X</button>
+      <img id="resortImage" src="" alt="Resort Image">
+      <h2 id="resortName"></h2>
+      <h4 id="resortLocation"></h4>
+      <p id="resortDesc"></p>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <h3>Visit Mabini, Batangas</h3>
+    <p>Email: tourism@mabini.gov.ph | Facebook Page: Mabini Tourism</p>
+    <p>Phone: (043) 123-4567</p>
+    <p>&copy; 2025 Mabini Tourism Office. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function showResort(name, location, description, image) {
+      document.getElementById("resortName").innerText = name;
+      document.getElementById("resortLocation").innerText = location;
+      document.getElementById("resortDesc").innerText = description;
+      document.getElementById("resortImage").src = image;
+      document.getElementById("resortModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("resortModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById("resortModal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
