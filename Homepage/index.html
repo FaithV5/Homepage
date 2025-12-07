@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mabini, Batangas Tourism</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+      <ul>
+        <li><a href="resorts.html">Resorts</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+  </nav>
+    
+  <header>
+    <div class="hero-panel">
+      <div class="hero">
+        <h1>Discover Mabini, Batangas</h1>
+        <p>Dive into paradise, relax on white sand beaches, and experience true Batangueño hospitality.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="section">
+      <h2>Welcome to Mabini</h2>
+      <p class="intro">
+        Nestled along the Batangas coastline, Mabini is known as the "Diving Capital of the Philippines". 
+        With its vibrant coral reefs, crystal clear waters, and scenic mountain views, its the perfect destination 
+        for adventurers, families, and nature lovers alike.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Top Attractions</h2>
+      <div class="carousel">
+        <div class="slides">
+          <img src="images/beach.jpg" alt="Mabini Beach">
+          <img src="images/diving.webp" alt="Scuba Diving">
+          <img src="images/snorkeling.jpg" alt="Snorkeling">
+          <img src="images/mt. gulugod.jpg" alt="Mt. Gulugod Baboy">
+          <img src="images/kayaking.jpg" alt="Kayaking">
+          <img src="images/Isla Sombrero.jpg" alt="Isla Sombrero">
+        </div>
+      </div>
+      <div class="dots"></div>
+    </section>
+
+    <section class="section">
+      <h2>Stay in Paradise</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="images/Anilao Awari Bay Resort.jpg" alt="Anilao Awari Bay Resort">
+          <div class="card-content">
+            <h3>Anilao Awari Bay Resort</h3>
+            <p>On a private beach along Balayan Bay, this breezy resort is between the Old Anchor and Arthurs Rock dive sites.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/Vivere Azure Resort.jpg" alt="Vivere Azure Resort">
+          <div class="card-content">
+            <h3>Vivere Azure Resort</h3>
+            <p>A luxury, 5-star resort featuring 13 unique suites with floor-to-ceiling windows, verandas, and sea/sunset views.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="map" class="section map">
+      <h2>Find Us on the Map</h2>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7737.351399874157!2d120.918579!3d13.737034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd0f8a6a5b47e7%3A0x32f8b3393e9352cf!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1694303523410"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </section>
+  </div>
+
+  <footer id="footer">
+    <h3>Visit Mabini, Batangas</h3>
+    <p>Email: tourism@mabini.gov.ph | Facebook Page: Mabini Tourism</p>
+    <p>Phone: (043) 123-4567</p>
+    <p>&copy; 2025 Mabini Tourism Office. All Rights Reserved.</p>
+  </footer>
+
+<script>
+  const slides = document.querySelector(".slides");
+  const images = document.querySelectorAll(".slides img");
+  const dotsContainer = document.querySelector(".dots");
+
+  let index = 0;
+  const total = images.length;
+
+  images.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => moveToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function moveToSlide(i) {
+    index = i;
+    slides.style.transform = `translateX(${-index * 100}%)`;
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+  }
+
+  function autoSlide() {
+    index = (index + 1) % total;
+    moveToSlide(index);
+  }
+
+  setInterval(autoSlide, 5000);
+</script>  
+  <script src="particles.js"></script>
+</body>
+</html>
